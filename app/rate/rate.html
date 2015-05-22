@@ -1,0 +1,61 @@
+<template name="rate">
+  <h3>It's time to rate.</h3>
+
+  {{#if isProcessing}}
+    {{> processing}}
+  {{else}}
+    {{#if isAllRated}}
+      <div class="valign-wrapper" style="height: 20rem;">
+        <div class="valign" style="margin: 0 auto;">
+          <h5 class="blue-grey-text">Nothing to rate.</h5>
+        </div>
+      </div>
+    {{else}}
+    <div class="row">
+      {{#each images}}
+        {{> rate_image_card}}
+      {{/each}}
+    </div>
+
+    <div class="fixed-action-btn">
+      <a class="btn-floating btn-large waves-effect waves-light red {{#if isNoneSelected}}disabled{{/if}}"
+         id="image-rate-submission">
+        <i class="mdi-content-send"></i>
+      </a>
+    </div>
+    {{/if}}
+  {{/if}}
+</template>
+
+<template name="processing">
+  <div class="valign-wrapper" style="height: 20rem;">
+    <div class="valign preloader-wrapper big active" style="margin: 0 auto;">
+      <div class="spinner-layer spinner-blue-only">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div><div class="gap-patch">
+        <div class="circle"></div>
+      </div><div class="circle-clipper right">
+        <div class="circle"></div>
+      </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template name="rate_image_card">
+  <div class="col s12 m6">
+    <div class="card image-rating {{#if isSelected _id}}z-depth-3 indigo darken-1 blue-grey-text text-lighten-5{{/if}}">
+      <div class="card-image">
+        <img src="images/{{fileName}}">
+      </div>
+      <div class="card-content">
+        <p>Some content</p>
+      </div>
+      <div class="card-action">
+        <a href="#">Fullscreen</a>
+        <a href='#'>Flag</a>
+      </div>
+    </div>
+  </div>
+</template>

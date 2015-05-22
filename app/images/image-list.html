@@ -1,0 +1,51 @@
+
+<template name="image_list">
+  <div class="row">
+    {{#each images}}
+      <div class="col s12 m3">
+        {{> image_card}}
+      </div>
+    {{else}}
+      <form enctype="multipart/form-data">
+        <div class="col sm12 l12 valign-wrapper {{#if isUploadZoneStatus 'hover'}}teal accent-3{{else}}grey-text{{/if}}"
+             style="height: 20rem; margin-top: 2rem;"
+             id="image-upload-zone">
+          <div class="valign center-align" style="width: 100%; pointer-events: none;"> <!-- disabled pointer events so that drags will be handled exclusively by container -->
+            {{#if isUploadZoneStatus 'hover'}}
+              <h5>Drop to upload...</h5>
+            {{else}}
+              {{#if isUploadZoneStatus 'processing'}}
+                {{> processing}}
+              {{else}}
+                <h5>No images in collection</h5>
+                Drag & drop images here to upload
+              {{/if}}
+            {{/if}}
+          </div>
+        </div>
+      </form>
+    {{/each}}
+  </div>
+  <div class="fixed-action-btn">
+    <a class="btn-floating btn-large waves-effect waves-light red modal-trigger" href="#images-file-upload"><i class="mdi-content-add"></i></a>
+  </div>
+
+  <!-- Modal Structure -->
+  <div id="images-file-upload" class="modal">
+    <div class="modal-content">
+      <h4>Upload images</h4>
+      <form>
+        <div class="file-field input-field">
+          <input class="file-path validate" type="text"/>
+          <div class="btn">
+            <span>Select file</span>
+            <input type="file" class="image-upload" accept="image/*" multiple />
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Cancel</a>
+    </div>
+  </div>
+</template>

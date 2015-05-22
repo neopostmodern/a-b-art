@@ -1,0 +1,37 @@
+<template name="image">
+  <img src="{{imgsrc image.fileId}}" style="width: 100%; margin-top: 2rem;" />
+
+  <div class="row">
+    <div class="col sm12 l4">
+      <h4>Information</h4>
+      {{#with image}}
+        {{> image_information}}
+      {{/with}}
+      <br/>
+
+      <h4>Superior Image</h4>
+      {{#if image.superior}}
+        {{#with superiorImage}}
+          {{> image_card}}
+        {{/with}}
+      {{else}}
+        No superior images known.
+      {{/if}}
+    </div>
+
+    <div class="col sm12 l8">
+      <h4>Inferior Images</h4>
+      <div class="row">
+        {{#each inferiorImages}}
+          <div class="col sm12 l6">
+            {{> image_card}}
+          </div>
+        {{else}}
+          <div class="col sm12 l12 valign-wrapper" style="height: 5em;">
+            <h5 class="valign" style="margin: 0 auto">No inferior images.</h5>
+          </div>
+        {{/each}}
+      </div>
+    </div>
+  </div>
+</template>

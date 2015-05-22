@@ -1,0 +1,26 @@
+<template name="image_card">
+  <div class="card">
+    <div class="card-image">
+      <img src="{{imgsrc fileId}}">
+      <!--<span class="card-title">Card Title</span>-->
+    </div>
+    <div class="card-content">
+      {{> image_information}}
+    </div>
+    <!--<div class="card-action">-->
+    <!--<a href="#">This is a link</a>-->
+    <!--<a href='#'>This is a link</a>-->
+    <!--</div>-->
+  </div>
+</template>
+
+<template name="image_information">
+  <div class="row no-bottom-margin">
+    <div class="col s12 m4 bold">File ID</div>
+    <div class="col s12 m8">{{fileId}}</div>
+    <div class="col s12 m4 bold">File Name</div>
+    <div class="col s12 m8">{{imgname fileId}}</div>
+    <div class="col s12 m4 bold">Rating</div>
+    <div class="col s12 m8">{{rating}}</div>
+  </div>
+</template>
