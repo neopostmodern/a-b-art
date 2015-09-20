@@ -5,7 +5,13 @@ RIGHT = 1
   template: 'rate'
   data: ->
     images:
-      Images.find({ superior: null }, limit: 2).fetch()
+      Images.find(
+        superior: null
+      ,
+        sort:
+          rating: 1
+        limit: 2
+      ).fetch()
 
   onAfterAction: ->
     $('body').on('keypress', (event) =>

@@ -7,7 +7,7 @@
       image: image
 
     if image?.inferior?
-      data.inferiorImages = Images.find _id: $in: image.inferior
+      data.inferiorImages = Images.find { _id: $in: image.inferior }, sort: rating: -1
     if image?.superior?
       data.superiorImage = Images.findOne image.superior
 

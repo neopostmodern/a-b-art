@@ -4,6 +4,10 @@
     images: Images.find({}, sort: rating: -1)
 )
 
+ImageListRouteController.VIEW_MODE =
+  LIST: 'list'
+  CARDS: 'cards'
+
 _uploadImage = (files) ->
   for file in files
     ImageFiles.insert file, (error, fileObj) ->
@@ -31,10 +35,23 @@ ImageListRouteController.events(
     @state.set 'uploadZoneStatus', 'processing'
 
     _uploadImage (event.dataTransfer ? event.originalEvent.dataTransfer).files
+
+  'click #image_list-as_list': (event, template) ->
+    event.preventDefault()
+    event.stopPropagation()
+
+    @state.set 'displayMode', ImageListRouteController.VIEW_MODE.LIST
+
+  'click #image_list-as_cards': (event, template) ->
+    event.preventDefault()
+    event.stopPropagation()
+
+    @state.set 'displayMode', ImageListRouteController.VIEW_MODE.CARDS
 )
 
 ImageListRouteController.helpers(
   isUploadZoneStatus: (status) -> @state.get('uploadZoneStatus') is status
+  isDisplayMode: (mode) -> mode is @state.get 'displayMode'
 )
 
 Router.route 'imageList',

@@ -1,33 +1,48 @@
-
 <template name="image_list">
-  <div class="row">
-    {{#each images}}
-      <div class="col s12 m3">
-        {{> image_card}}
-      </div>
-    {{else}}
-      <form enctype="multipart/form-data">
-        <div class="col sm12 l12 valign-wrapper {{#if isUploadZoneStatus 'hover'}}teal accent-3{{else}}grey-text{{/if}}"
-             style="height: 20rem; margin-top: 2rem;"
-             id="image-upload-zone">
-          <div class="valign center-align" style="width: 100%; pointer-events: none;"> <!-- disabled pointer events so that drags will be handled exclusively by container -->
-            {{#if isUploadZoneStatus 'hover'}}
-              <h5>Drop to upload...</h5>
-            {{else}}
-              {{#if isUploadZoneStatus 'processing'}}
-                {{> processing}}
-              {{else}}
-                <h5>No images in collection</h5>
-                Drag & drop images here to upload
-              {{/if}}
-            {{/if}}
-          </div>
-        </div>
-      </form>
-    {{/each}}
+  <div class="right-align">
+    <a href="#">
+      <i class="material-icons medium {{#if isDisplayMode 'list'}}black-text{{else}}grey-text{{/if}}"
+                   id="image_list-as_list">list</i>
+    </a>
+    <a href="#">
+      <i class="material-icons medium {{#if isDisplayMode 'list'}}black-text{{else}}grey-text{{/if}}"
+                   id="image_list-as_cards">dashboard</i>
+    </a>
   </div>
+
+  {{#if images}}
+    {{#if isDisplayMode 'cards'}}
+      {{> image_list_as_cards}}
+    {{else}}
+      {{> image_list_as_table}}
+    {{/if}}
+  {{else}}
+    <form enctype="multipart/form-data">
+      <div class="row">
+      <div class="col sm12 l12 valign-wrapper {{#if isUploadZoneStatus 'hover'}}teal accent-3{{else}}grey-text{{/if}}"
+           style="height: 20rem; margin-top: 2rem;"
+           id="image-upload-zone">
+        <div class="valign center-align" style="width: 100%; pointer-events: none;"> <!-- disabled pointer events so that drags will be handled exclusively by container -->
+          {{#if isUploadZoneStatus 'hover'}}
+            <h5>Drop to upload...</h5>
+          {{else}}
+            {{#if isUploadZoneStatus 'processing'}}
+              {{> processing}}
+            {{else}}
+              <h5>No images in collection</h5>
+              Drag & drop images here to upload
+            {{/if}}
+          {{/if}}
+        </div>
+      </div>
+      </div>
+    </form>
+  {{/if}}
+
   <div class="fixed-action-btn">
-    <a class="btn-floating btn-large waves-effect waves-light red modal-trigger" href="#images-file-upload"><i class="mdi-content-add"></i></a>
+    <a class="btn-floating btn-large waves-effect waves-light red modal-trigger" href="#images-file-upload">
+      <i class="material-icons">add</i>
+    </a>
   </div>
 
   <!-- Modal Structure -->

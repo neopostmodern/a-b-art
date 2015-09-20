@@ -1,0 +1,17 @@
+<template name="log">
+  <h2>Log</h2>
+  <ul class="collection">
+    {{#each logEntries}}
+      <li class="collection-item avatar">
+        <img src="{{getImage items}}" alt="" class="circle">
+        <span class="title">Title</span>
+        <p>
+          {{description}}
+        </p>
+        <a href="#!" class="secondary-content"><i class="material-icons">undo</i></a>
+      </li>
+    {{else}}
+      <h3>the log is currently empty</h3>
+    {{/each}}
+  </ul>
+</template>

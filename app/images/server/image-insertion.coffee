@@ -12,5 +12,11 @@ Meteor.methods(
 
     image.fileId = info.fileId
 
-    return Images.insert image
+    tx.start("Insert image (#{image.fileId})")
+
+    imageDocument = Images.insert image, tx: true
+
+    tx.commit()
+
+    return imageDocument
 )

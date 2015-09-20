@@ -1,0 +1,21 @@
+<template name="image_list_as_table">
+  <table class="bordered">
+    {{#each images}}
+      <tr>
+        <td>
+          <img src="{{imgsrc fileId}}" alt="" class="circle" style="width: 3rem;">
+        </td>
+        <td>
+          <span class="title">{{imgname fileId}}</span><br/>
+          <i>{{fileId}}</i>
+        </td>
+        <td>{{rating}}</td>
+        <td>
+          <a href="#!" class="secondary-content">
+            <i class="material-icons">launch</i>
+          </a>
+        </td>
+      </tr>
+    {{/each}}
+  </table>
+</template>
