@@ -1,4 +1,41 @@
 <template name="home">
-  <h1>A-B Art</h1>
-  <h3>Because machines are artists and you are their curator.</h3>
+  <h2>Projects</h2>
+
+  <div class="row">
+    {{#each projects}}
+      <div class="col s12 m3">
+        <div class="card">
+          <div class="card-image">
+            <div class="image-square-center">
+              <img src="{{imgsrc 'HRQnZF9uHypC3nNkC'}}"> <!-- images.[0] -->
+            </div>
+            <span class="card-title">{{name}}</span>
+          </div>
+          <div class="card-content">
+            <div class="row no-bottom-margin">
+              <div class="col s12 m4 bold">Name</div>
+              <div class="col s12 m8">{{name}}</div>
+              <div class="col s12 m4 bold">ID</div>
+              <div class="col s12 m8">{{_id}}</div>
+              <div class="col s12 m4 bold">Images</div>
+              <div class="col s12 m8">{{images.length}}</div>
+              <div class="col s12 m4 bold">Voting</div>
+              <div class="col s12 m8">Tree</div>
+            </div>
+          </div>
+          <div class="card-action">
+            <a href="#!">Select</a>
+            <a href="#!">View Images</a>
+            <a href="#!">Edit</a>
+          </div>
+        </div>
+      </div>
+    {{/each}}
+  </div>
+
+  <div class="fixed-action-btn">
+    <a class="btn-floating btn-large waves-effect waves-light red" href="#!">
+      <i class="material-icons">add</i>
+    </a>
+  </div>
 </template>

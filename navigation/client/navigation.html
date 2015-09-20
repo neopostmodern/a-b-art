@@ -1,9 +1,27 @@
 <template name="navigation">
+  <ul id="project-selection-dropdown" class="dropdown-content">
+    {{#each projects}}
+      <li><a>{{name}}</a></li>
+    {{/each}}
+  </ul>
   <div class="navbar-fixed">
     <nav>
       <div class="nav-wrapper">
         <div class="container">
-          <a href="/" class="brand-logo">A-B Art</a>
+          <ul class="left">
+            <li><a href="/">A-B Art</a></li>
+            <li>
+              <a class="dropdown-button" data-activates="project-selection-dropdown">
+                {{#if activeProject}}
+                  {{activeProject.name}}
+                {{else}}
+                  ...
+                {{/if}}
+                <i class="material-icons right">arrow_drop_down</i>
+              </a>
+            </li>
+          </ul>
+
           <ul id="nav-mobile" class="right hide-on-med-and-down">
             <li class="{{#if isActiveRoute 'rate'}}active{{/if}}">
               <a href="{{pathFor 'rate'}}">A-B Rate</a>
