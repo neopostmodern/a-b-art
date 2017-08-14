@@ -24,7 +24,6 @@ check
 ecmascript
 promise
 
-autopublish
 insecure
 materialize:materialize@=0.97.0
 coffeescript

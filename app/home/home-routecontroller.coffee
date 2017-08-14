@@ -1,5 +1,8 @@
 @HomeRouteController = RouteController.extend(
   template: 'home'
+  subscriptions: -> [
+    Meteor.subscribe Projects.SUBSCRIPTIONS.USER
+  ]
   data: ->
     return projects: Projects.find()
 )
